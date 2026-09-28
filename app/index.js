@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>FIAP - Atividade DevOps</title>
+        <title>CP DevOps - Tema Jogos</title>
         <style>
             body {
                 background-color: #1a1a1a;
@@ -59,11 +59,11 @@ app.get('/', (req, res) => {
                 padding: 40px;
                 border-radius: 12px;
                 box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-                border-top: 5px solid #ED145B;
+                border-top: 5px solid #0078D4;
                 max-width: 600px;
             }
             h1 {
-                color: #ED145B;
+                color: #0078D4;
                 margin-top: 0;
             }
             p {
@@ -75,7 +75,7 @@ app.get('/', (req, res) => {
                 display: inline-block;
                 margin-top: 20px;
                 padding: 12px 24px;
-                background-color: #ED145B;
+                background-color: #0078D4;
                 color: #ffffff;
                 text-decoration: none;
                 border-radius: 6px;
@@ -83,7 +83,7 @@ app.get('/', (req, res) => {
                 transition: background-color 0.3s;
             }
             .btn:hover {
-                background-color: #c0104a;
+                background-color: #005a9e;
             }
             .badge {
                 display: inline-block;
@@ -99,7 +99,7 @@ app.get('/', (req, res) => {
     <body>
         <div class="container">
             <div class="badge">Deploy Status: Sucesso! ✅</div>
-            <h1>Atividade DevOps & Cloud</h1>
+            <h1>🎮 CP DevOps &amp; Cloud: Tema Jogos</h1>
             <p>Parabéns! Sua aplicação Node.js foi implementada com sucesso no Azure Web App através da sua esteira CI/CD.</p>
             <p>O App Insights já está monitorando sua aplicação.</p>
             <a href="/tema" class="btn">🚀 Ver Dados do Banco</a>
