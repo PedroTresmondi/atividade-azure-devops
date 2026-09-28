@@ -113,9 +113,35 @@ app.get('/tema', async (req, res) => {
     try {
         // ALUNOS: Usem a configuração dbConfig para conectar no banco e fazer o SELECT na tabela do tema escolhido!
         await sql.connect(dbConfig);
-        const result = await sql.query`SELECT * FROM NomeDaSuaTabela`; // ALTERAR AQUI!
-        
-        res.json(result.recordset);
+        const result = await sql.query`SELECT ID, Nome, Genero, Plataforma, AnoLancamento FROM Jogos ORDER BY ID`;
+
+        const linhas = result.recordset.map(j => `
+            <tr><td>${j.ID}</td><td>${j.Nome}</td><td>${j.Genero}</td><td>${j.Plataforma}</td><td>${j.AnoLancamento}</td></tr>`).join('');
+
+        res.send(`
+        <!DOCTYPE html>
+        <html lang="pt-BR">
+        <head>
+            <meta charset="UTF-8">
+            <title>Tema: Jogos</title>
+            <style>
+                body { background-color: #1a1a1a; color: #fff; font-family: 'Segoe UI', Tahoma, sans-serif; display: flex; flex-direction: column; align-items: center; padding: 40px; }
+                h1 { color: #ED145B; }
+                table { border-collapse: collapse; background-color: #262626; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 16px rgba(0,0,0,0.5); }
+                th, td { padding: 12px 20px; text-align: left; border-bottom: 1px solid #333; }
+                th { background-color: #ED145B; }
+                a { color: #ED145B; margin-top: 24px; }
+            </style>
+        </head>
+        <body>
+            <h1>🎮 Tema: Jogos</h1>
+            <table>
+                <tr><th>ID</th><th>Nome</th><th>Gênero</th><th>Plataforma</th><th>Ano</th></tr>${linhas}
+            </table>
+            <a href="/">← Voltar</a>
+        </body>
+        </html>
+        `);
     } catch (err) {
         console.error("Erro ao conectar no banco:", err);
         res.status(500).send("Erro ao buscar os dados: " + err.message);
